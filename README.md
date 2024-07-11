@@ -3,6 +3,8 @@ Muto GmbH, Switzerland, website
 
 This site is hosted on https://pages.github.com/ .
 
+NOTE: Sometimes there is delay between changes in this repo and when they appear on website.
+
 So you can easily use Theme and Static Site generator like Jekyll ( https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/adding-a-theme-to-your-github-pages-site-using-jekyll ) or Hugo , 
 to comfortably edit your website in github webui as markdown files.
 
