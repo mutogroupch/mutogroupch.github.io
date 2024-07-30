@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="We are a group of architects on a mission to advance the digital maturity of the construction industry. With years of experience in demanding roles and projects in Switzerland, we strive to support the digitalization of planning, construction, and operations in a practical and down-to-earth manner.">
     <title>Muto GmbH - Digital Architecture Consultancy.</title>
     <style>
-        body, html {
+        body,
+        html {
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
@@ -13,6 +16,7 @@
             color: #333;
             height: 100%;
         }
+
         .container {
             display: flex;
             flex-direction: column;
@@ -23,41 +27,61 @@
             box-sizing: border-box;
             text-align: center;
         }
+
         h1 {
             font-size: 3rem;
             margin-bottom: 1rem;
             color: #2c3e50;
         }
+
         p {
             margin-bottom: 0.5rem;
         }
-        .description {
-            max-width: 600px;
-            margin: 2rem 0;
-        }
-        .contact {
+
             margin-top: 2rem;
         }
+
         a {
             color: #3498db;
             text-decoration: none;
         }
+
         a:hover {
             text-decoration: underline;
         }
     </style>
+    <style>
+        body {
+            background-size: cover;
+            background-color: #f6f2eb;
+        }
+
+        object#logo {
+            position: absolute;
+            top: 0%;
+            bottom: 0%;
+            right: 0%;
+            left: 0%;
+            z-index: 8;
+            max-width: 100%;
+        }
+
+        .contacts {
+            display: none;
+        }
+    </style>
 </head>
+
 <body>
     <div class="container">
         <h1>Muto GmbH</h1>
-        <div class="description">
-            <p>We are a group of architects on a mission to advance the digital maturity of the construction industry. With years of experience in demanding roles and projects in Switzerland, we strive to support the digitalization of planning, construction, and operations in a practical and down-to-earth manner.</p>
-        </div>
-        <div class="contact">
+        <div><object id="logo" width="100%" height="100%" data="assets/strMUTO-01.svg"></object></div>
+        <div class="contacts">
             <p>Gubelstrasse 37, 8050 Zürich, Switzerland</p>
             <p>Email: <a href="mailto:mail@mutogroup.ch">mail@mutogroup.ch</a></p>
             <p>Phone: <a href="tel:+41766506311">+41 766 506 311</a></p>
         </div>
     </div>
 </body>
+
 </html>
