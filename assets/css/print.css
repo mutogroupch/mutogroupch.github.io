@@ -1,0 +1,81 @@
+/* ========================================
+   MUTO Landschaftsarchitektur — Print Stylesheet
+   ======================================== */
+
+@media print {
+  /* Hide navigation and interactive elements */
+  .site-footer,
+  .site-nav,
+  .lang-switch,
+  .project-back,
+  .contact-map {
+    display: none !important;
+  }
+
+  /* Reset layout for print */
+  .site {
+    display: block;
+  }
+
+  .site-header {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0 0 1cm 0;
+  }
+
+  .site-main {
+    padding: 0;
+  }
+
+  /* Typography */
+  body {
+    font-size: 11pt;
+    line-height: 1.5;
+    color: #000;
+    background: #fff;
+  }
+
+  h1 { font-size: 18pt; }
+  h2 { font-size: 14pt; }
+  h3 { font-size: 12pt; }
+
+  /* Images */
+  img {
+    max-width: 100% !important;
+    page-break-inside: avoid;
+  }
+
+  /* Links */
+  a {
+    color: #000;
+    text-decoration: underline;
+  }
+
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 9pt;
+    color: #666;
+  }
+
+  a[href^="mailto"]::after {
+    content: " (" attr(href) ")";
+    font-size: 9pt;
+    color: #666;
+  }
+
+  /* Page breaks */
+  .project-header,
+  .team-member {
+    page-break-inside: avoid;
+  }
+
+  h1, h2, h3 {
+    page-break-after: avoid;
+  }
+
+  /* Logo for print */
+  .logo {
+    max-width: 120px;
+  }
+}

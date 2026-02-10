@@ -1,0 +1,593 @@
+/* ========================================
+   MUTO Landschaftsarchitektur — Main Stylesheet
+   Minimalist, monochrome + accent
+   Mobile-first responsive
+   ======================================== */
+
+/* --- Font Faces --- */
+@font-face {
+  font-family: 'Archivo';
+  src: url('../fonts/Archivo-Regular.woff2') format('woff2'),
+       url('../fonts/Archivo-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Archivo';
+  src: url('../fonts/Archivo-Bold.woff2') format('woff2'),
+       url('../fonts/Archivo-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* --- Design Tokens --- */
+:root {
+  /* Colors */
+  --color-bg: #ffffff;
+  --color-text: #1a1a1a;
+  --color-text-muted: #666666;
+  --color-accent: #FF00FF;
+  --color-border: #e0e0e0;
+  --color-lang-inactive: #808080;
+
+  /* Typography */
+  --font-primary: 'Archivo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-size-base: 1rem;
+  --font-size-sm: 0.875rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 1.75rem;
+  --font-size-xxl: 2.5rem;
+  --line-height: 1.6;
+
+  /* Spacing */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --space-xl: 6rem;
+
+  /* Layout */
+  --max-width: 1200px;
+  --max-width-text: 720px;
+  --sidebar-width: 350px;
+
+  /* Transitions */
+  --transition: 0.3s ease;
+}
+
+/* --- Reset --- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: var(--color-text);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+a:hover,
+a:focus {
+  color: var(--color-accent);
+}
+
+a:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+h1, h2, h3, h4 {
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+h1 { font-size: var(--font-size-xxl); }
+h2 { font-size: var(--font-size-xl); }
+h3 { font-size: var(--font-size-lg); }
+
+/* --- Layout --- */
+
+/* Site wrapper: sidebar left + main right */
+.site {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.site-header {
+  padding: var(--space-md);
+}
+
+.site-main {
+  flex: 1;
+  padding: var(--space-md);
+}
+
+.site-footer {
+  padding: var(--space-md);
+}
+
+/* Logo — scaled to 350px to match sidebar width */
+.logo {
+  display: block;
+  max-width: 350px;
+  margin-bottom: var(--space-md);
+}
+
+.logo img {
+  width: 100%;
+  height: auto;
+}
+
+/* Container */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.container--narrow {
+  max-width: var(--max-width-text);
+}
+
+/* --- Navigation (now in header/sidebar) --- */
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  align-items: center;
+}
+
+.site-nav a {
+  font-size: var(--font-size-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.site-nav a.is-active {
+  color: var(--color-accent);
+}
+
+/* --- Language Switcher --- */
+.lang-switch {
+  margin-left: var(--space-sm);
+}
+
+.lang-switch a {
+  font-size: var(--font-size-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Active language = black, inactive = 50% gray */
+.lang-switch a.is-active {
+  color: var(--color-text);
+}
+
+.lang-switch a:not(.is-active) {
+  color: var(--color-lang-inactive);
+}
+
+/* --- Copyright (bottom of page, scrolls with content) --- */
+.copyright {
+  padding: var(--space-md);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+/* --- Hero --- */
+.hero {
+  position: relative;
+  margin-bottom: var(--space-lg);
+}
+
+.hero picture,
+.hero img {
+  width: 100%;
+  height: auto;
+}
+
+/* Hero tagline — 75% of previous size */
+.hero-tagline {
+  margin-top: var(--space-md);
+  font-size: 1.3125rem; /* 75% of 1.75rem */
+  font-weight: 400;
+  color: var(--color-text);
+}
+
+/* --- Homepage hero: fill viewport exactly, no scroll --- */
+.hero--home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin-bottom: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  overflow: hidden;
+}
+
+/* SVG overlay: white foil with transparent symbol cutout */
+.hero--home .hero-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* Tagline: positioned under the symbol, right-aligned */
+.hero--home .hero-tagline {
+  position: absolute;
+  bottom: var(--space-md);
+  right: var(--space-md);
+  z-index: 2;
+  text-align: right;
+  margin-top: 0;
+}
+
+/* --- Project Grid (Overview) --- */
+.project-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+}
+
+.project-card {
+  display: block;
+}
+
+.project-card picture,
+.project-card img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.project-card-info {
+  padding: var(--space-xs) 0;
+}
+
+.project-card-title {
+  font-size: var(--font-size-base);
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.project-card-meta {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+/* --- Project Detail --- */
+.project-header {
+  margin-bottom: var(--space-md);
+}
+
+.project-title {
+  font-size: 1.875rem; /* Match page-title size (75% of 2.5rem) */
+  margin-bottom: var(--space-xs);
+}
+
+.project-meta {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-md);
+}
+
+/* Reduce spacing between consecutive meta paragraphs */
+.project-meta + .project-meta {
+  margin-top: -1.5rem;
+}
+
+.project-meta span + span::before {
+  content: ' · ';
+}
+
+.project-description {
+  max-width: var(--max-width-text);
+  margin-bottom: var(--space-lg);
+}
+
+.project-description p {
+  margin-bottom: var(--space-sm);
+}
+
+.project-gallery {
+  display: block;
+}
+
+.project-gallery picture {
+  display: block;
+  margin-bottom: var(--space-sm);
+  break-inside: avoid;
+}
+
+.project-gallery img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.project-back {
+  display: inline-block;
+  margin-top: var(--space-lg);
+  font-size: var(--font-size-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.project-back::before {
+  content: '← ';
+}
+
+/* --- Team Page --- */
+.team-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+}
+
+.team-member {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.team-member-portrait {
+  max-width: 300px;
+}
+
+.team-member-portrait picture,
+.team-member-portrait img {
+  width: 100%;
+  height: auto;
+}
+
+.team-member-name {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+}
+
+.team-member-role {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.team-member-bio {
+  max-width: var(--max-width-text);
+  font-size: var(--font-size-base);
+}
+
+/* --- Contact Page --- */
+.contact-layout {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+.contact-info {
+  flex: 1;
+}
+
+.contact-info p {
+  margin-bottom: var(--space-xs);
+}
+
+.contact-info a {
+  color: var(--color-accent);
+}
+
+/* WhatsApp icon inline with phone */
+.whatsapp-icon {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+  margin-right: 0.5rem;
+}
+
+.contact-qr {
+  max-width: 200px;
+}
+
+.contact-map {
+  max-width: 600px;
+  margin-top: var(--space-md);
+}
+
+.contact-map iframe {
+  width: 100%;
+  height: 250px;
+  border: none;
+}
+
+/* --- 404 Page --- */
+.error-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  text-align: center;
+}
+
+.error-page h1 {
+  font-size: 6rem;
+  color: var(--color-accent);
+  margin-bottom: var(--space-sm);
+}
+
+/* --- Page Title — 75% of previous size --- */
+.page-title {
+  font-size: 1.875rem; /* 75% of 2.5rem */
+  margin-bottom: var(--space-lg);
+}
+
+/* --- Section spacing --- */
+.section {
+  margin-bottom: var(--space-xl);
+}
+
+/* --- Utilities --- */
+.text-muted {
+  color: var(--color-text-muted);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* ========================================
+   Responsive — Tablet (768px+)
+   ======================================== */
+@media (min-width: 768px) {
+  .project-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .project-gallery {
+    column-count: 2;
+    column-gap: var(--space-sm);
+  }
+
+  .project-gallery picture {
+    margin-bottom: var(--space-sm);
+    break-inside: avoid;
+  }
+
+  .team-member {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .team-member-portrait {
+    flex-shrink: 0;
+    width: 200px;
+  }
+
+  .contact-layout {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 600px;
+  }
+
+  .contact-qr {
+    flex-shrink: 0;
+  }
+
+  .contact-map iframe {
+    height: 300px;
+  }
+}
+
+/* ========================================
+   Responsive — Desktop (1024px+)
+   ======================================== */
+@media (min-width: 1024px) {
+  .site {
+    display: grid;
+    grid-template-columns: var(--sidebar-width) 1fr;
+    grid-template-rows: 1fr auto;
+    min-height: 100vh;
+  }
+
+  .site-header {
+    grid-column: 1;
+    grid-row: 1;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-lg) var(--space-md);
+  }
+
+  .site-header .site-nav {
+    margin-top: auto;
+  }
+
+  .site-main {
+    grid-column: 2;
+    grid-row: 1;
+    min-width: 0;
+    padding: var(--space-lg) var(--space-lg) var(--space-lg) var(--space-md);
+  }
+
+  /* Footer: copyright at bottom of main content column */
+  .site-footer {
+    grid-column: 2;
+    grid-row: 2;
+    padding: var(--space-sm) var(--space-lg) var(--space-md) var(--space-md);
+  }
+
+  .site-nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-xs);
+  }
+
+  .lang-switch {
+    margin-left: 0;
+    margin-top: var(--space-sm);
+  }
+
+  .project-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Hero tagline desktop — 75% of previous 2.5rem = 1.875rem */
+  .hero-tagline {
+    font-size: 1.875rem;
+  }
+
+  .team-member-portrait {
+    width: 250px;
+  }
+}
